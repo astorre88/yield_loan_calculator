@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: yield_loan_calculator_development
+  username: <%= ENV['PG_DB_USER'] %>
+  password: <%= ENV['PG_PASSWORD'] %>
+
+test:
+  <<: *default
+  database: yield_loan_calculator_test
+  username: <%= ENV['PG_DB_USER'] %>
+  password: <%= ENV['PG_PASSWORD'] %>
+
+production:
+  <<: *default
+  database: yield_loan_calculator_production
+  username: yield_loan_calculator
+  password: <%= ENV['YIELD_LOAN_CALCULATOR_DATABASE_PASSWORD'] %>
