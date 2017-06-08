@@ -1,0 +1,6 @@
+var content = '';
+<% message.each do |m| %>
+  content += '<p><%= m %></p>';
+<% end %>
+$('#messages-block').html(content);
+$('#messages-block').removeClass('text-success').addClass('text-danger');

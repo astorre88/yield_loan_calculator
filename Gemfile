@@ -12,6 +12,10 @@ gem 'sass-rails', '~> 5.0', '>= 5.0.6'
 gem 'uglifier', '~> 3.2'
 gem 'turbolinks', '~> 5.0', '>= 5.0.1'
 gem 'slim-rails', '~> 3.1', '>= 3.1.2'
+gem 'jquery-rails', '~> 4.1', '>= 4.1.1'
+gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'interactor-rails', '~> 2.0', '>= 2.0.1'
+gem 'cocoon', '~> 1.2', '>= 1.2.10'
 
 group :development, :test do
   gem 'pry-rails', '~> 0.3.6'
