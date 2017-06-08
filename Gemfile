@@ -29,3 +29,5 @@ group :development do
   gem 'spring', '~> 2.0', '>= 2.0.2'
   gem 'spring-watcher-listen', '~> 2.0', '>= 2.0.1'
 end
+
+ruby '2.4.1'
