@@ -9,7 +9,8 @@
 #
 
 class User < ApplicationRecord
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: true, length: { in: 3..20 }
 
-  has_many :payments, dependent: :destroy
+  has_many :payments, inverse_of: :user, dependent: :destroy
+  accepts_nested_attributes_for :payments, reject_if: proc { |attributes| attributes[:amount].blank? }, allow_destroy: true
 end

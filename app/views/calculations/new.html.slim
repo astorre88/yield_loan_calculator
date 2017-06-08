@@ -1,0 +1,26 @@
+.container
+  .row
+    .col-md-8
+      .card.card-outline-primary
+        .card-header Расчёт доходности
+        .card-block
+          = form_with url: calculations_path do |form|
+            .form-group
+              = form.text_field :sum, placeholder: 'Введите сумму', class: 'form-control'
+            .form-group
+              = form.submit 'Расчитать', class: 'btn btn-outline-primary'
+    .col-md-4
+      .card.card-outline-primary
+        .card-header Добавить юридическое лицо
+        .card-block
+          = form_for @user, remote: true, id: 'user-form' do |form|
+            .form-group
+              = form.text_field :name, placeholder: 'Введите имя пользователя', class: 'form-control'
+            = form.fields_for :payments do |payment|
+              h5 Платежи
+              = render 'payment_fields', f: payment
+            = link_to_add_association 'добавить платёж', form, :payments
+            .form-group
+              = form.submit 'Создать', class: 'btn btn-outline-primary'
+            .form-group
+              small#messages-block
