@@ -15,7 +15,6 @@ class AddUserData
 
   def init_user
     context.user = User.new context.params
-    context.user.payments.build
 
     context.fail! errors: context.user.errors.full_messages unless context.user.valid?
   end

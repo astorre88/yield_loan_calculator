@@ -12,5 +12,5 @@
 class Payment < ApplicationRecord
   validates :amount, numericality: true
 
-  belongs_to :user, inverse_of: :payments
+  belongs_to :user
 end
