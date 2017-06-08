@@ -1,0 +1,15 @@
+ru:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              taken: уже используется
+              blank: не может быть пустым
+              too_short: "не может быть менее %{count} символов"
+              too_long: "не может быть длиннее %{count} символов"
+        payment:
+          attributes:
+            amount:
+              not_a_number: должно быть числом
