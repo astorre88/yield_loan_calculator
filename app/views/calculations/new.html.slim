@@ -4,11 +4,25 @@
       .card.card-outline-primary
         .card-header Расчёт доходности
         .card-block
-          = form_with url: calculations_path do |form|
-            .form-group
-              = form.text_field :sum, placeholder: 'Введите сумму', class: 'form-control'
-            .form-group
-              = form.submit 'Расчитать', class: 'btn btn-outline-primary'
+          .row
+            .col-md-4
+              = form_with url: calculations_path do |form|
+                .form-group
+                  = form.number_field :sum, step: 0.01, placeholder: 'Введите сумму', class: 'form-control'
+                .form-group
+                  = form.submit 'Рассчитать', id: 'calc-button', class: 'btn btn-outline-primary'
+                .form-group
+                  small#calc-messages-block
+            .col-md-8
+              .card-deck
+                .card.card-outline-secondary.text-center
+                  .card-block
+                    h4.card-title Ожидаемая доходность
+                    p.card-text#expected-result
+                .card.card-outline-secondary.text-center
+                  .card-block
+                    h4.card-title Историческая доходность
+                    p.card-text#hisotric-result
     .col-md-4
       .card.card-outline-primary
         .card-header Добавить юридическое лицо

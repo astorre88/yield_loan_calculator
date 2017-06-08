@@ -4,7 +4,7 @@ class CalculationsController < ApplicationController
   end
 
   def create
-    result = CalculateYieldLoan.call invested_sum: calc_params[:sum]
+    result = CalculateYieldLoan.call invested_sum: expected_sum.to_f
 
     respond_to do |format|
       if result.success?
@@ -26,7 +26,7 @@ class CalculationsController < ApplicationController
 
   private
 
-  def calc_params
+  def expected_sum
     params.require(:sum)
   end
 end

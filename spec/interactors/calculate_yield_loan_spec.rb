@@ -27,11 +27,11 @@ RSpec.describe CalculateYieldLoan, type: :interactor do
 
   it 'calculates expected result' do
     expect(@result.expected_result)
-      .to eq(0.3)
+      .to eq(30)
   end
 
   it 'calculates expected result' do
     expect(@result.hisotric_result)
-      .to be_within(0.002).of(0.31)
+      .to eq(31)
   end
 end

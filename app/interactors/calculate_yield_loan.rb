@@ -9,10 +9,14 @@ class CalculateYieldLoan
     context.monthly_payment_sum = count_payment_sum
 
     first_user = User.first
-    context.expected_result = (check_user(first_user) * 3) / (context.invested_sum * 3) / MONTHS * 12
+    context.expected_result = to_percents (check_user(first_user) * 3) / (context.invested_sum * 3) / MONTHS * 12
 
     users = User.all
-    context.hisotric_result = users.map { |u| check_user(u) }.reduce(:+) / (users.count * context.invested_sum) / MONTHS * 12
+    context.hisotric_result = to_percents users.map { |u| check_user(u) }.reduce(:+) / (users.count * context.invested_sum) / MONTHS * 12
+  end
+
+  def to_percents(result)
+    (result * 100).round
   end
 
   def check_user(user)
@@ -28,11 +32,7 @@ class CalculateYieldLoan
   end
 
   def check_payments(payments)
-    overdued_months = 0
-
-    payments.each do |payment|
-      overdued_months += 1 if payment.amount > context.monthly_payment_sum
-    end
+    overdued_months = payments.where('amount > ?', context.monthly_payment_sum).count
 
     if overdued_months > 0
       const_calc * (MONTHS - overdued_months) + penny_const_calc * overdued_months

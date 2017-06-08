@@ -1,4 +1,12 @@
 jQuery(document).on('turbolinks:load', function() {
+  if ($('input[name="sum"]').val().length < 1) {
+    $('input[id="calc-button"]').prop('disabled', true);
+  }
+  $('input[name="sum"]').on('keyup select', function() {
+    if ($(this).val !== '') {
+      return $('input[id="calc-button"]').prop('disabled', false);
+    }
+  });
   var count, payments, recount;
   payments = $('#payments');
   count = payments.find('.count > span');

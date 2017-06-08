@@ -1,0 +1,5 @@
+$('#calc-messages-block').html('<%= message %>');
+$('#calc-messages-block').removeClass('text-danger').addClass('text-success');
+$('#expected-result').html('<%= number_to_percentage expected_result %>');
+$('#hisotric-result').html('<%= number_to_percentage hisotric_result %>');
+$('.nested-fields').remove();

@@ -1,5 +1,5 @@
 .nested-fields
   .form-group
-    = f.number_field :amount, class: 'form-control'
+    = f.number_field :amount, step: 0.01, value: 191_666.67, class: 'form-control'
   .form-group
     = link_to_remove_association 'удалить платёж', f

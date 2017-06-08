@@ -16,6 +16,7 @@ gem 'jquery-rails', '~> 4.1', '>= 4.1.1'
 gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'interactor-rails', '~> 2.0', '>= 2.0.1'
 gem 'cocoon', '~> 1.2', '>= 1.2.10'
+gem 'rails-assets-tether', '~> 1.1', '>= 1.1.1'
 
 group :development, :test do
   gem 'pry-rails', '~> 0.3.6'
