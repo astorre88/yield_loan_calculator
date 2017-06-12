@@ -1,15 +1,14 @@
 # Clean DB
 User.destroy_all
 
-# Seed DB
 {
-  'ЮЛ1' => [191_666.67, 191_666.67, 191_666.67, 191_666.67, 191_666.67, 191_666.67],
-  'ЮЛ2' => [191_666.67, 191_666.67, 191_666.67, 525_000.00, 0, 0],
-  'ЮЛ3' => [191_666.67, 191_666.67, 208_333.33, 208_333.33, 208_333.33, 208_333.33]
-}.each do |name, payments|
+  'ЮЛ1' => [false] * 6,
+  'ЮЛ2' => [false] * 4,
+  'ЮЛ3' => [false] * 2 + [true] * 4
+}.each do |name, statuses|
   u = User.new name: name
-  payments.each do |amount|
-    u.payments.build amount: amount
+  statuses.each do |status|
+    u.payments.build overdued: status
   end
   u.save!
 end

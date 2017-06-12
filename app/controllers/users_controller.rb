@@ -16,6 +16,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, payments_attributes: [:id, :amount, :_destroy])
+    params.require(:user).permit(:name, payments_attributes: [:id, :overdued, :_destroy])
   end
 end

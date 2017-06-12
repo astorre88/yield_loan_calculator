@@ -7,13 +7,13 @@ RSpec.describe CalculateYieldLoan, type: :interactor do
     @invested_sum = 1_000_000
 
     {
-      'ЮЛ1' => [191_666.67, 191_666.67, 191_666.67, 191_666.67, 191_666.67, 191_666.67],
-      'ЮЛ2' => [191_666.67, 191_666.67, 191_666.67, 525_000.00, 0, 0],
-      'ЮЛ3' => [191_666.67, 191_666.67, 208_333.33, 208_333.33, 208_333.33, 208_333.33]
-    }.each do |name, payments|
+      'ЮЛ1' => [false] * 6,
+      'ЮЛ2' => [false] * 4,
+      'ЮЛ3' => [false] * 2 + [true] * 4
+    }.each do |name, statuses|
       u = create(:user, name: name)
-      payments.each do |amount|
-        create(:payment, amount: amount, user: u)
+      statuses.each do |status|
+        create(:payment, overdued: status, user: u)
       end
     end
 

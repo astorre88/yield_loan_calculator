@@ -32,7 +32,7 @@ class CalculateYieldLoan
   end
 
   def check_payments(payments)
-    overdued_months = payments.where('amount > ?', context.monthly_payment_sum).count
+    overdued_months = payments.overdued.count
 
     if overdued_months > 0
       const_calc * (MONTHS - overdued_months) + penny_const_calc * overdued_months

@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170606210219) do
+ActiveRecord::Schema.define(version: 20170612133752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "payments", force: :cascade, comment: "Таблица платежей" do |t|
-    t.decimal "amount", precision: 15, scale: 2, default: "0.0", null: false, comment: "Сумма платежа"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "overdued", default: false, null: false, comment: "Статус платежа"
     t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
